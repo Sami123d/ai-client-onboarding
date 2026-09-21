@@ -1,0 +1,156 @@
+.service-selector {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-3xl) var(--spacing-xl);
+}
+
+.service-selector-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.service-selector-header h1 {
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.service-selector-header p {
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    color: var(--color-text-tertiary);
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+    perspective: 1500px;
+}
+
+.service-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: var(--spacing-2xl);
+    cursor: pointer;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
+    transition: all 0.6s cubic-bezier(0.2, 1, 0.2, 1);
+    background: hsla(0, 0%, 100%, 0.01);
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-10px) rotateX(2deg) rotateY(1deg);
+    background: hsla(0, 0%, 100%, 0.03);
+    border-color: var(--color-primary);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px var(--color-primary-glow);
+}
+
+/* Card Glimmer Effect */
+.card-glimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 45%, hsla(0, 0%, 100%, 0.05) 50%, transparent 55%);
+    background-size: 200% 200%;
+    transition: background-position 0.6s;
+}
+
+.service-card:hover .card-glimmer {
+    background-position: -100% -100%;
+}
+
+.card-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xl);
+    text-transform: uppercase;
+}
+
+.service-icon-container {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-lg);
+    filter: drop-shadow(0 0 10px var(--color-primary-glow));
+}
+
+.service-card h3 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+.service-card p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-2xl);
+    flex-grow: 1;
+}
+
+.service-card-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--glass-border);
+    padding-top: var(--spacing-lg);
+}
+
+.action-text {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-text-tertiary);
+}
+
+.service-arrow {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-arrow {
+    transform: translateX(5px);
+    color: var(--color-primary);
+}
+
+.service-card:hover .action-text {
+    color: white;
+}
+
+.service-selector-footer {
+    margin-top: var(--spacing-3xl);
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.help-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-tertiary);
+}
+
+@media (max-width: 1024px) {
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        padding: var(--spacing-xl);
+    }
+}
