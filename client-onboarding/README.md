@@ -1,13 +1,11 @@
-> **Note:** This is a modified, extended fork of [Ismail Sajid's AI-Client-Onboarding-System](https://github.com/Ismail-2001/AI-Client-Onboarding-System) (MIT License). See the [root README](../README.md) for full attribution and a list of what changed in this fork.
+> **Note:** This is the original project documentation from [Ismail Sajid's AI-Client-Onboarding-System](https://github.com/Ismail-2001/AI-Client-Onboarding-System) (MIT License), kept for reference. The original banner image and the upstream Netlify status badge were removed because they did not apply to this repository. See the [root README](../README.md) for attribution, what changed in this fork, and up-to-date setup instructions.
 
 <div align="center">
-  <img src="public/banner.png" alt="AI Client Onboarding Agent Banner" width="100%">
   
   # 🤖 AI Client Onboarding Agent
   
   **Autonomizing Agency Discovery with Generative Intelligence & Agentic Workflows**
 
-  [![Netlify Status](https://api.netlify.com/api/v1/badges/91322a7f-ba24-49fd-93d3-88ff452e83a6/deploy-status)](https://app.netlify.com/sites/your-site-name/deploys)
   [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
   [![DeepSeek](https://img.shields.io/badge/AI-DeepSeek-blue?logo=openai&logoColor=white)](https://deepseek.com/)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
