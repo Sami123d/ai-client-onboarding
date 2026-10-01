@@ -4,12 +4,21 @@ export const handler = async (event, context) => {
     }
 
     const { type, summary, messages: chatMessages } = JSON.parse(event.body);
+    // Provider selection: Gemini (free tier, OpenAI-compatible endpoint) if
+    // GEMINI_API_KEY is set, otherwise DeepSeek.
+    const GEMINI_KEY = process.env.GEMINI_API_KEY;
     const DEEPSEEK_KEY = process.env.VITE_DEEPSEEK_API_KEY;
+    const useGemini = Boolean(GEMINI_KEY);
+    const API_KEY = useGemini ? GEMINI_KEY : DEEPSEEK_KEY;
+    const API_URL = useGemini
+        ? 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'
+        : 'https://api.deepseek.com/chat/completions';
+    const MODEL = process.env.LLM_MODEL || (useGemini ? 'gemini-2.5-flash' : 'deepseek-chat');
 
-    if (!DEEPSEEK_KEY) {
+    if (!API_KEY) {
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: 'DeepSeek API Key not configured on Netlify' })
+            body: JSON.stringify({ error: 'No AI key configured on Netlify (set GEMINI_API_KEY or VITE_DEEPSEEK_API_KEY)' })
         };
     }
 
@@ -50,20 +59,34 @@ export const handler = async (event, context) => {
     }
 
     try {
-        const response = await fetch('https://api.deepseek.com/chat/completions', {
+        const response = await fetch(API_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${DEEPSEEK_KEY.trim()}`
+                'Authorization': `Bearer ${API_KEY.trim()}`
             },
             body: JSON.stringify({
-                model: 'deepseek-chat',
+                model: MODEL,
                 messages: apiMessages,
                 response_format: type === 'estimation' ? { type: 'json_object' } : undefined
             })
         });
 
         const data = await response.json();
+        if (!response.ok || !data.choices?.[0]?.message) {
+            const msg = (Array.isArray(data) ? data[0]?.error?.message : data?.error?.message) || `AI provider returned ${response.status}`;
+            return {
+                statusCode: 502,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ error: msg })
+            };
+        }
+        // Some models wrap JSON in ```json fences; the client JSON.parses this field.
+        if (type === 'estimation') {
+            const raw = data.choices[0].message.content || '';
+            const match = raw.match(/\{[\s\S]*\}/);
+            if (match) data.choices[0].message.content = match[0];
+        }
         return {
             statusCode: 200,
             headers: { 'Content-Type': 'application/json' },
