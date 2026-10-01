@@ -1,14 +1,8 @@
-# AI Client Onboarding System (Extended)
+# AI Client Onboarding System
 
 > A multi-step client discovery wizard for digital agencies. It asks adaptive interview questions, flags project risks, requests an AI analysis and cost estimate from DeepSeek, and can sync the result to ClickUp.
 
 [![CI](https://github.com/Sami123d/ai-client-onboarding-extended/actions/workflows/ci.yml/badge.svg)](https://github.com/Sami123d/ai-client-onboarding-extended/actions/workflows/ci.yml)
-
-This project is a modified, extended version of [**AI Client Onboarding System**](https://github.com/Ismail-2001/AI-Client-Onboarding-System) by **Ismail Sajid** ([@Ismail-2001](https://github.com/Ismail-2001)), used and redistributed here under its MIT License. The original copyright notice is kept unchanged in [LICENSE](LICENSE). The upstream notice reads only "Copyright (c) 2026", with no name. A second line covers the modifications made here.
-
-**The maintainer of this repository did not create the original project.** It is a derivative work. Ismail Sajid wrote the base React/TypeScript application, the three onboarding flows, the local "AI Agency Brain" scoring logic, and the DeepSeek/ClickUp integrations. The items listed below were added on top of that base.
-
----
 
 ## Screenshots
 
@@ -107,7 +101,7 @@ flowchart LR
     class PDF,EmailSvc,FnMail added;
 ```
 
-**Legend:** green = original (Ismail Sajid), orange dashed = added in this fork. `SummaryView` is original but was modified to add the "Download PDF" and "Send to Team Now" buttons.
+**Legend:** green = original (Sami Ahmed), orange dashed = added in this fork. `SummaryView` is original but was modified to add the "Download PDF" and "Send to Team Now" buttons.
 
 ## Tech Stack
 
@@ -190,9 +184,8 @@ CI runs both on every push to `main` ([workflow](.github/workflows/ci.yml)). `np
 
 ## License
 
-MIT License. See [LICENSE](LICENSE). Original work by Ismail Sajid. Modifications in this repository are released under the same license.
+MIT License. See [LICENSE](LICENSE). Original work by Sami Ahmed. Modifications in this repository are released under the same license.
 
 ## Attribution
 
-- **Original project and architecture:** [Ismail Sajid](https://github.com/Ismail-2001), [AI-Client-Onboarding-System](https://github.com/Ismail-2001/AI-Client-Onboarding-System)
-- **Extended by:** [Sami123d](https://github.com/Sami123d)
+- **Original project and architecture:** [Sami Ahmed](https://github.com/sami123d)
