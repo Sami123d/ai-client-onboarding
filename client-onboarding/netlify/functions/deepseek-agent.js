@@ -13,7 +13,7 @@ export const handler = async (event, context) => {
     const API_URL = useGemini
         ? 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'
         : 'https://api.deepseek.com/chat/completions';
-    const MODEL = process.env.LLM_MODEL || (useGemini ? 'gemini-2.5-flash' : 'deepseek-chat');
+    const MODEL = process.env.LLM_MODEL || (useGemini ? 'gemini-flash-latest' : 'deepseek-chat');
 
     if (!API_KEY) {
         return {
