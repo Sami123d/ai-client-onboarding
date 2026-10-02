@@ -3,39 +3,40 @@
    =================================== */
 
 /* Import Modern Typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 /* ===================================
    CSS Variables - Design Tokens
    =================================== */
 :root {
-  /* Colors - Deep Agency Palette */
-  --color-bg: hsl(240, 10%, 4%);
-  --color-surface: hsl(240, 10%, 6%);
-  --color-surface-soft: hsla(240, 10%, 15%, 0.4);
-  --color-surface-hover: hsla(240, 10%, 20%, 0.6);
+  /* Colors - Clean light SaaS palette */
+  --color-bg: #F7F8FC;
+  --color-bg-tertiary: #EEF2FF;
+  --color-surface: #FFFFFF;
+  --color-surface-soft: #F1F5F9;
+  --color-surface-hover: #E9EEF6;
 
-  --color-primary: hsl(250, 84%, 54%);
-  --color-primary-glow: hsla(250, 84%, 54%, 0.4);
-  --color-accent: hsl(320, 85%, 65%);
-  --color-accent-glow: hsla(320, 85%, 65%, 0.4);
+  --color-primary: #4F46E5;
+  --color-primary-glow: rgba(79, 70, 229, 0.18);
+  --color-accent: #7C3AED;
+  --color-accent-glow: rgba(124, 58, 237, 0.18);
 
-  --color-success: hsl(150, 80%, 40%);
-  --color-warning: hsl(45, 90%, 50%);
-  --color-error: hsl(0, 80%, 60%);
+  --color-success: #059669;
+  --color-warning: #D97706;
+  --color-error: #DC2626;
 
-  --color-text-primary: hsl(0, 0%, 98%);
-  --color-text-secondary: hsl(240, 5%, 75%);
-  --color-text-tertiary: hsl(240, 5%, 50%);
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #64748B;
 
-  /* Glassmorphism */
-  --glass-bg: hsla(240, 10%, 10%, 0.6);
-  --glass-border: hsla(0, 0%, 100%, 0.08);
-  --glass-highlight: hsla(0, 0%, 100%, 0.05);
+  /* Surfaces (kept as "glass" names for the existing components) */
+  --glass-bg: #FFFFFF;
+  --glass-border: #E5E7EB;
+  --glass-highlight: transparent;
 
   /* Typography */
   --font-primary: 'Inter', system-ui, sans-serif;
-  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -63,11 +64,11 @@
   --radius-full: 9999px;
 
   /* Shadows & Glows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 20px -5px var(--color-primary);
-  --shadow-glow-accent: 0 0 20px -5px var(--color-accent);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 1px 3px rgba(15, 23, 42, 0.04), 0 12px 32px -8px rgba(15, 23, 42, 0.12);
+  --shadow-glow: 0 10px 30px -10px rgba(79, 70, 229, 0.45);
+  --shadow-glow-accent: 0 10px 30px -10px rgba(124, 58, 237, 0.45);
 
   /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -91,7 +92,7 @@
   left: 0;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, hsla(250, 84%, 54%, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.06) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -136,7 +137,7 @@ body::after {
   width: 100%;
   height: 100%;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.05;
+  opacity: 0;
   pointer-events: none;
   z-index: 10000;
   mix-blend-mode: overlay;
@@ -150,10 +151,9 @@ body::before {
   width: 200%;
   height: 200%;
   background-image:
-    radial-gradient(circle at 30% 30%, hsla(250, 84%, 54%, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 70% 70%, hsla(320, 85%, 65%, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 10% 90%, hsla(280, 70%, 60%, 0.1) 0%, transparent 35%),
-    radial-gradient(circle at 90% 10%, hsla(170, 80%, 45%, 0.08) 0%, transparent 35%);
+    radial-gradient(circle at 30% 20%, rgba(99, 102, 241, 0.10) 0%, transparent 40%),
+    radial-gradient(circle at 75% 15%, rgba(168, 85, 247, 0.08) 0%, transparent 38%),
+    radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.07) 0%, transparent 35%);
   z-index: -1;
   animation: meshFlow 45s infinite alternate ease-in-out;
   filter: blur(100px);
@@ -193,7 +193,7 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsla(0, 0%, 100%, 0.15);
+  background: #CBD5E1;
   border-radius: var(--radius-full);
 }
 
@@ -245,7 +245,7 @@ h4 {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #fff 0%, var(--color-text-tertiary) 100%);
+  background: linear-gradient(135deg, #0F172A 0%, #334155 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -305,8 +305,6 @@ a:hover {
 /* Glass Card */
 .glass-card {
   background: var(--glass-bg);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-2xl);
@@ -326,8 +324,8 @@ a:hover {
 }
 
 .glass-card:hover {
-  border-color: hsla(0, 0%, 100%, 0.15);
-  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  border-color: #C7D2FE;
+  box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
   transition: all var(--transition-base);
 }
@@ -374,14 +372,14 @@ a:hover {
 }
 
 .btn-outline {
-  background: transparent;
-  color: white;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
   border: 1px solid var(--glass-border);
 }
 
 .btn-outline:hover {
   border-color: var(--color-primary);
-  background: hsla(0, 0%, 100%, 0.05);
+  background: var(--color-bg-tertiary);
 }
 
 /* Input Base */
@@ -400,8 +398,8 @@ a:hover {
 
 .input:focus {
   border-color: var(--color-primary);
-  background: var(--color-bg);
-  box-shadow: 0 0 0 1px var(--color-primary-glow);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 4px var(--color-primary-glow);
 }
 
 /* Form Groups */
@@ -413,17 +411,18 @@ a:hover {
   display: block;
   font-size: var(--font-size-sm);
   font-weight: 500;
-  color: var(--color-text-tertiary);
+  color: var(--color-text-secondary);
   margin-bottom: var(--spacing-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 /* Progress Bar */
 .progress-bar {
   width: 100%;
-  height: 4px;
-  background: var(--color-surface);
+  height: 6px;
+  background: #E2E8F0;
   border-radius: var(--radius-full);
   overflow: hidden;
 }
@@ -449,7 +448,7 @@ a:hover {
   padding: var(--spacing-lg) !important;
   border-radius: var(--radius-md) !important;
   border: 1px solid var(--glass-border) !important;
-  background: hsla(0, 0%, 100%, 0.02) !important;
+  background: var(--color-surface) !important;
   display: flex !important;
   align-items: center;
   gap: var(--spacing-md);
@@ -458,8 +457,8 @@ a:hover {
 .radio-card.selected,
 .checkbox-card.selected {
   border-color: var(--color-primary) !important;
-  background: hsla(250, 84%, 54%, 0.08) !important;
-  box-shadow: 0 0 20px hsla(250, 84%, 54%, 0.1);
+  background: var(--color-bg-tertiary) !important;
+  box-shadow: 0 0 0 3px var(--color-primary-glow);
 }
 
 /* ===================================
