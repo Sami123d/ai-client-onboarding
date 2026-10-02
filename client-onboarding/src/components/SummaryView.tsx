@@ -128,7 +128,7 @@ const SummaryView: React.FC<SummaryViewProps> = ({ summary, onBack }) => {
                     </p>
                 </div>
 
-                <div className="bento-item bento-md glass-card" style={{ background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(16, 185, 129, 0.05))' }}>
+                <div className="bento-item bento-md glass-card" style={{ background: 'linear-gradient(135deg, #ECFDF5, #F0FDFA)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
                         <h3>💰 AI Cost Estimation</h3>
                         <button
@@ -180,7 +180,7 @@ const SummaryView: React.FC<SummaryViewProps> = ({ summary, onBack }) => {
                             onClick={handleGenerateAiReport}
                             disabled={aiReport.loading}
                         >
-                            {aiReport.loading ? 'Agent Thinking...' : aiReport.content ? 'Regenerate Analysis' : 'Generate DeepSeek Report'}
+                            {aiReport.loading ? 'Agent Thinking...' : aiReport.content ? 'Regenerate Analysis' : 'Generate AI Report'}
                         </button>
                     </div>
 
@@ -245,7 +245,7 @@ const SummaryView: React.FC<SummaryViewProps> = ({ summary, onBack }) => {
                     <h3 className="text-gradient">Recommended Growth Add-ons</h3>
                     <div className="checkbox-grid" style={{ marginTop: '15px' }}>
                         {aiAnalysis.suggestedAddons.map((addon, i) => (
-                            <div key={i} className="checkbox-card" style={{ cursor: 'default', background: 'rgba(255,255,255,0.03)' }}>
+                            <div key={i} className="checkbox-card" style={{ cursor: 'default', background: 'var(--color-surface-soft)' }}>
                                 <span>✨ {addon}</span>
                             </div>
                         ))}
