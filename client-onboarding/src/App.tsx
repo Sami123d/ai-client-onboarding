@@ -40,18 +40,16 @@ function App() {
 
   // Dynamic Theming based on service
   useEffect(() => {
-    if (selectedService === 'website') {
-      document.documentElement.style.setProperty('--color-primary', 'hsl(250, 84%, 54%)');
-      document.documentElement.style.setProperty('--color-accent', 'hsl(320, 85%, 65%)');
-    } else if (selectedService === 'branding') {
-      document.documentElement.style.setProperty('--color-primary', 'hsl(280, 70%, 60%)');
-      document.documentElement.style.setProperty('--color-accent', 'hsl(45, 93%, 47%)');
+    // Accents tuned for contrast on the light theme
+    if (selectedService === 'branding') {
+      document.documentElement.style.setProperty('--color-primary', '#7C3AED');
+      document.documentElement.style.setProperty('--color-accent', '#DB2777');
     } else if (selectedService === 'automation') {
-      document.documentElement.style.setProperty('--color-primary', 'hsl(170, 80%, 45%)');
-      document.documentElement.style.setProperty('--color-accent', 'hsl(190, 90%, 50%)');
+      document.documentElement.style.setProperty('--color-primary', '#0D9488');
+      document.documentElement.style.setProperty('--color-accent', '#0284C7');
     } else {
-      document.documentElement.style.setProperty('--color-primary', 'hsl(250, 84%, 54%)');
-      document.documentElement.style.setProperty('--color-accent', 'hsl(320, 85%, 65%)');
+      document.documentElement.style.setProperty('--color-primary', '#4F46E5');
+      document.documentElement.style.setProperty('--color-accent', '#7C3AED');
     }
   }, [selectedService]);
 
