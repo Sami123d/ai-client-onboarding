@@ -59,20 +59,28 @@ export const handler = async (event, context) => {
     }
 
     try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_KEY.trim()}`
-            },
-            body: JSON.stringify({
-                model: MODEL,
-                messages: apiMessages,
-                response_format: type === 'estimation' ? { type: 'json_object' } : undefined
-            })
-        });
-
-        const data = await response.json();
+        // On the Gemini free tier the main model can be overloaded (503) or
+        // rate limited (429); fall back to the lighter model on the same key.
+        const models = useGemini
+            ? [MODEL, process.env.LLM_FALLBACK_MODEL || 'gemini-flash-lite-latest']
+            : [MODEL];
+        let response, data;
+        for (const model of models) {
+            response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${API_KEY.trim()}`
+                },
+                body: JSON.stringify({
+                    model,
+                    messages: apiMessages,
+                    response_format: type === 'estimation' ? { type: 'json_object' } : undefined
+                })
+            });
+            data = await response.json();
+            if (response.ok || ![429, 500, 503].includes(response.status)) break;
+        }
         if (!response.ok || !data.choices?.[0]?.message) {
             const msg = (Array.isArray(data) ? data[0]?.error?.message : data?.error?.message) || `AI provider returned ${response.status}`;
             return {
