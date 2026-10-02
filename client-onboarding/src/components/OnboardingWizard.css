@@ -21,7 +21,8 @@
 }
 
 .btn-back {
-    background: hsla(0, 0%, 100%, 0.03);
+    background: var(--color-surface);
+    border: 1px solid var(--glass-border);
     border: 1px solid var(--glass-border);
     color: var(--color-text-secondary);
     padding: 0.6rem 1.2rem;
@@ -36,9 +37,9 @@
 }
 
 .btn-back:hover {
-    background: hsla(0, 0%, 100%, 0.08);
+    background: var(--color-bg-tertiary);
     transform: translateX(-4px);
-    color: white;
+    color: var(--color-primary);
 }
 
 .step-count {
@@ -70,7 +71,7 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
-    background: hsla(0, 0%, 100%, 0.02);
+    background: var(--color-surface-soft);
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--radius-full);
     border: 1px solid var(--glass-border);
