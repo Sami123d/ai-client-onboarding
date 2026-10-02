@@ -1,7 +1,8 @@
 .settings-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
@@ -49,7 +50,7 @@
 }
 
 .btn-close {
-    background: hsla(0, 0%, 100%, 0.05);
+    background: var(--color-surface-soft);
     border: 1px solid var(--glass-border);
     color: var(--color-text-primary);
     width: 40px;
